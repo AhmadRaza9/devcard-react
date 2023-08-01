@@ -2,6 +2,49 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D",
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF",
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#60DAFB",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#149ECA",
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00",
+  },
+  {
+    skill: "PHP",
+    level: "intermediate",
+    color: "#336699",
+  },
+];
+
 function App() {
   return (
     <div className="card">
@@ -40,23 +83,26 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="React" emoji="🎉" color="#ffa500" />
-      <Skill skill="JavaScript" emoji="🎈" color="#ff4500" />
-      <Skill skill="Web Desing" emoji="🎁" color="#7979ff" />
-      <Skill skill="Svelte" emoji="🎊" color="#ff0000" />
-      <Skill skill="HTML & CSS" emoji="✨" color="#c20fc2" />
-      <Skill skill="Git & Github" emoji="🎆" color="#f71e1e" />
-      <Skill skill="PHP" emoji="👑" color="#00deff" />
-      <Skill skill="WordPress Developer" emoji="🎭" color="#2de697" />
+      {skills.map((skill) => (
+        <Skill skill={skill.skill} color={skill.color} level={skill.level} />
+      ))}
     </div>
   );
 }
 
-function Skill(props) {
+function Skill({ skill, color, level }) {
   return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill} </span>
-      <span>{props.emoji}</span>
+    <div className="skill" style={{ backgroundColor: color }}>
+      <span>{skill} </span>
+      <span>
+        {level == "beginner"
+          ? "👶"
+          : "" || level == "intermediate"
+          ? "👍"
+          : "" || level == "advanced"
+          ? "💪"
+          : ""}
+      </span>
     </div>
   );
 }
